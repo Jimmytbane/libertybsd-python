@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 """
-Name: ports_deblob.sh
-Main: jadedctrl
-Lisc: ISC
+Name: ports_deblob.py
+Main: JimmyBot(jmfgdev)
+Lisc: GPLV3
 Desc: Delobbing OBSD ports
       tree for use with
       LBSD.
@@ -13,7 +13,7 @@ Desc: Delobbing OBSD ports
 
 . ./libdeblob.sh
 
-PATCH_DIR = /tmp/ports_deblob/
+PATCH_DIR = "/tmp/ports_deblob/"
 
 if [ -e PATCH_DIR ]
 then
