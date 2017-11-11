@@ -157,9 +157,12 @@ def apply():
 
 def self_destruct_sequence(): 
 	echo "$1 will be deleted in three seconds."
-	echo "CTRL-C now to avoid this fate!"
-	echo "3"; sleep 1
-	echo "2"; sleep 1
-	echo "1"; sleep 1
-	printf "0\nDestruction!"
-	rm -rf "$1"
+	print("CTRL-C now to avoid this fate!")
+	print("3") 
+	sleep 1
+	print("2") 
+	sleep 1
+	print("1")
+	sleep 1
+	print("0\nDestruction!")
+	system("rm -rf %s") % (sys.argv[1])
