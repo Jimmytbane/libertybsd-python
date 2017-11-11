@@ -14,7 +14,7 @@ Desc: Functions to be
 # Turns a file and it's path into a friendly filename
 # Usage: filetize $filepath
 def filetize(): 
-	system("echo "$1" | sed 's|/|\^|g')
+	system("echo "$1" | sed 's|/|\^|g'")
 
 # Vice-versa, clearly.
 # Usage: unfiletize $filetizedpath
@@ -156,7 +156,7 @@ def apply():
 	done
 
 def self_destruct_sequence(): 
-	echo "$1 will be deleted in three seconds."
+	print("%s will be deleted in three seconds.") % (sys.argv[1])
 	print("CTRL-C now to avoid this fate!")
 	print("3") 
 	sleep 1
