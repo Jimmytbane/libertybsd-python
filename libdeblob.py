@@ -19,7 +19,7 @@ def filetize():
 # Vice-versa, clearly.
 # Usage: unfiletize $filetizedpath
 def unfiletize(): 
-	system("echo "$1" | sed 's|\^|/|g'")
+	system("echo "%s" | sed 's|\^|/|g'") % (sys.argv[1])
 
 # Prints $1 number of spaces.
 # Usage: space $number
