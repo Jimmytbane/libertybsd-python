@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import sys
+
 """
 Name: man_deblob.sh
 Main: jadedctrl
