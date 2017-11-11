@@ -13,14 +13,14 @@ Desc: Delobbing OBSD ports
 
 . ./libdeblob.sh
 
-PATCH_DIR=/tmp/ports_deblob/
+PATCH_DIR = /tmp/ports_deblob/
 
-if [ -e $PATCH_DIR ]
+if [ -e PATCH_DIR ]
 then
-	self_destruct_sequence $PATCH_DIR
-	mkdir $PATCH_DIR
+	self_destruct_sequence PATCH_DIR
+	mkdir PATCH_DIR
 else
-	mkdir $PATCH_DIR
+	mkdir PATCH_DIR
 fi
 
 if test -z $1
