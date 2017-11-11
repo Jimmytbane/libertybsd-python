@@ -14,7 +14,7 @@ Desc: Functions to be
 # Turns a file and it's path into a friendly filename
 # Usage: filetize $filepath
 def filetize(): 
-	system("echo "$1" | sed 's|/|\^|g'")
+	system("echo "%s" | sed 's|/|\^|g'") % (sys.argv[1])
 
 # Vice-versa, clearly.
 # Usage: unfiletize $filetizedpath
@@ -25,16 +25,16 @@ def unfiletize():
 # Usage: space $number
 def space(): 
 	typeset -i i=0
-	while [ $i != $1 ]
+	while [ $i != sys.argv[1] ]
 	do
-		printf " "
+		sys.stdout.write(" ")
 		i=i+1
 	done
 
 # Replace a string in a file
 # Usage: rep $replacee $replacer $file
 def rep():
-	local file_ft="$(filetize "$3")"
+	local file_ft = "$(filetize "$3")"
 	if [ -e "$PATCH_DIR/$file_ft" ]
 	then
 		sed 's^'"$1"'^'"$2"'^g' "$PATCH_DIR/$file_ft" > "$PATCH_DIR/$file_ft.tmp"
