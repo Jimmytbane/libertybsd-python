@@ -47,13 +47,12 @@ def rep():
 
 # Delete a string in a file
 # Usage: strdel $string $file
-strdel() {
+def strdel():
 	rep "$1" "" $2
-}
 
 # Inserts a new line after another
 # Usage: lineadd $string $newline $file
-lineadd() {
+def lineadd(): 
 	local file_ft="$(filetize "$3")"
 	if [ -e "$PATCH_DIR/$file_ft" ]
 	then
@@ -66,11 +65,10 @@ lineadd() {
 '"$2"'^' "$SRC_DIR/$3" > "$PATCH_DIR/$file_ft"
 		diff "$SRC_DIR/$3" "$PATCH_DIR/$file_ft" > "$PATCH_DIR/$file_ft.patch"
 	fi
-}
 
 # Removes a line.
 # Usage linedel $string $file
-linedel() {
+def linedel(): 
 	local file_ft="$(filetize "$2")"
 	if [ -e "$PATCH_DIR/$file_ft" ]
 	then
@@ -83,11 +81,10 @@ linedel() {
 		diff "$SRC_DIR/$2" "$PATCH_DIR/$file_ft" > "$PATCH_DIR/$file_ft.patch"
 		echo otherhell
 	fi
-}
 
 # "Copies" a dir
 # Usage: dircp $file $dest
-dircp() {
+def dircp(): 
 	if echo "$1" | grep -q "^files/"
 	then
 		echo "FILES"
@@ -96,11 +93,10 @@ dircp() {
 		echo "NO FILES"
 		cp -r "$SRC_DIR/$1" "$PATCH_DIR/ADD_$(filetize "$2")"
 	fi
-}
 
 # "Copies" a file
 # Usage: filecp $file $dest
-filecp() {
+def filecp(): 
 	if echo "$1" | grep -q "^files/"
 	then
 		echo "FILES"
@@ -109,17 +105,15 @@ filecp() {
 		echo "FILES"
 		cp "$SRC_DIR/$1" "$PATCH_DIR/ADD_$(filetize "$2")"
 	fi
-}
 
 # "Deletes" a file
 # Usage: filedel $file
-filedel() {
+def filedel(): 
 	echo "$PATCH_DIR $1"
 	touch "$PATCH_DIR/RM_$(filetize "$1")"
-}
 
 # Applies patches.
-apply() {
+def apply(): 
 	local file
 
 	for file in "$PATCH_DIR"/*
@@ -160,9 +154,8 @@ apply() {
 			fi
 		fi
 	done
-}
 
-self_destruct_sequence() {
+def self_destruct_sequence(): 
 	echo "$1 will be deleted in three seconds."
 	echo "CTRL-C now to avoid this fate!"
 	echo "3"; sleep 1
@@ -170,4 +163,3 @@ self_destruct_sequence() {
 	echo "1"; sleep 1
 	printf "0\nDestruction!"
 	rm -rf "$1"
-}
